@@ -1,6 +1,6 @@
 <?php
     //GPA and grade point using switch statement
-    $mark = 80;
+   /*  $mark = 80;
     switch($mark){
         case($mark>100):
             echo"you are wrong!";
@@ -35,3 +35,13 @@
         default:
             echo"Failled";
     }
+ */
+
+ function Series(){
+    $result=0;
+    for($i=1;$i<=100;$i++){
+        $result+=$i;
+    }
+    return "1+2+3....100 = ".$result;
+ }
+ echo Series();
