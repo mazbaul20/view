@@ -64,7 +64,7 @@
 </head>
 <body>
     <?php
-        function mathProject($num){
+        function mathProject(int $num){
             for($i=1;$i<=10;$i++){
                 echo "$i x $num = ".$i*$num."<br/>";
             }
@@ -89,14 +89,24 @@
       </form>
       <div class="showOutput">
         <?php
-          if(isset($_POST['submit'])){
-            if(!empty($_POST['num'])){
-              $num = $_POST['num'];
-              mathProject($num);
-            }else{
-              echo "<span style='color:red'><b>Number is Required!</b></span>";
+//          if(isset($_POST['submit'])){
+//            if(!empty($_POST['num'])){
+//              $num = $_POST['num'];
+//              mathProject($num);
+//            }else{
+//              echo "<span style='color:red'><b>Number is Required!</b></span>";
+//            }
+//          }
+            if(isset($_POST['submit'])){
+                if(empty($_POST['num'])){
+                    echo "<span style='color:red'><b>Number is Required!</b></span>";
+                }elseif(!is_numeric($_POST['num'])){
+                    echo "<span style='color:red'><b>Number is Required!</b></span>";
+                }else{
+                    $num = $_POST['num'];
+                    mathProject($num);
+                }
             }
-          }
         ?>
       </div>
       <div class="date">
