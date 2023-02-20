@@ -54,5 +54,18 @@ if(contains_only_letters_and_whitespace($str2)){
 
 //5.Write a PHP function to find the second largest number in an array of numbers.
 
+function Find_secend_largest_number($arr){
+    $count = count($arr);
+    rsort($arr);
+    for($i=0;$i<$count;$i++){
+        if($arr[$i] < $arr[0]){
+            return $arr[1];
+        }
+    }
+    return null;
+}
 
+$arr = array(8,19,27,87,92,99,89);
+$assignm_5 = Find_secend_largest_number($arr);
+echo "Secend largest number = ".$assignm_5;
 
