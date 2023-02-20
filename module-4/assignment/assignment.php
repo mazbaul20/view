@@ -37,20 +37,13 @@ echo PHP_EOL;
 //4.Write a PHP function to check if a string contains only letters and whitespace.
 
 function contains_only_letters_and_whitespace($str) {
-    return preg_match('/[a-zA-Z\s]/',$str);
+    if(preg_match('/^[a-zA-Z\s]+$/',$str)){
+        return "contains only letters and whitespace\n";
+    }
+    return "contains non-letter or non-whitespace characters\n";
 }
-$str1 = "Hello world";
-$str2 = "219";
-if(contains_only_letters_and_whitespace($str1)){
-    echo "String 1 contains only letters and whitespace\n";
-}else{
-    echo "String 1 contains non-letter or non-whitespace characters\n";
-}
-if(contains_only_letters_and_whitespace($str2)){
-    echo "String 2 contains only letters and whitespace\n";
-}else{
-    echo "String 2 contains non-letter or non-whitespace characters\n";
-}
+$str1 = "Hello world ";
+echo contains_only_letters_and_whitespace($str1);
 
 //5.Write a PHP function to find the second largest number in an array of numbers.
 
