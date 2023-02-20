@@ -42,9 +42,9 @@ function contains_only_letters_and_whitespace($str) {
 $str1 = "Hello world";
 $str2 = "219";
 if(contains_only_letters_and_whitespace($str1)){
-    echo "String 2 contains only letters and whitespace\n";
+    echo "String 1 contains only letters and whitespace\n";
 }else{
-    echo "String 2 contains non-letter or non-whitespace characters\n";
+    echo "String 1 contains non-letter or non-whitespace characters\n";
 }
 if(contains_only_letters_and_whitespace($str2)){
     echo "String 2 contains only letters and whitespace\n";
