@@ -6,3 +6,5 @@
 //cals(3,3,2,9,4,2);
 
 echo md5('mazbaul');
+
+

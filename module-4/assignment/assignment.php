@@ -1,0 +1,58 @@
+<?php
+//1.Write a PHP function to sort an array of strings by their length, in ascending order. (Hint: You can use the usort() function to define a custom sorting function.)
+function sort_by_length($arr){
+    usort($arr,function($a,$b){return (strlen($a) > strlen($b)) ? "1" : "0";});
+    return $arr;
+}
+
+$country = array("Bangladesh","Nepal", "Canada", "Bhutan", "Pakistan", "Soudi Arab","Afghanistan");
+$arr_sort = sort_by_length($country);
+print_r($arr_sort);
+echo PHP_EOL;
+
+//2.Write a PHP function to concatenate two strings, but with the second string starting from the end of the first string.
+
+function concatenate_two_strings($str1,$str2){
+    $str1.=$str2;
+    return $str1;
+}
+$string1 = "Hello";
+$string2 = "Sir";
+$concate = concatenate_two_strings($string1,$string2);
+echo $concate;
+echo PHP_EOL;
+
+//3.Write a PHP function to remove the first and last element from an array and return the remaining elements as a new array.
+
+function remove_fl_element($arr){
+    array_shift($arr);
+    array_pop($arr);
+    return $arr;
+}
+$array = ['Moinul','Mazbaul','Khalek','Mamun','Jannat','Jibon','Mehedi'];
+$arrView = remove_fl_element($array);
+print_r($arrView);
+echo PHP_EOL;
+
+//4.Write a PHP function to check if a string contains only letters and whitespace.
+
+function contains_only_letters_and_whitespace($str) {
+    return preg_match('/[a-zA-Z\s]/',$str);
+}
+$str1 = "Hello world";
+$str2 = "219";
+if(contains_only_letters_and_whitespace($str1)){
+    echo "String 2 contains only letters and whitespace\n";
+}else{
+    echo "String 2 contains non-letter or non-whitespace characters\n";
+}
+if(contains_only_letters_and_whitespace($str2)){
+    echo "String 2 contains only letters and whitespace\n";
+}else{
+    echo "String 2 contains non-letter or non-whitespace characters\n";
+}
+
+//5.Write a PHP function to find the second largest number in an array of numbers.
+
+
+
