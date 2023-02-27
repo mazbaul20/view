@@ -42,7 +42,7 @@ function contains_only_letters_and_whitespace($str) {
     }
     return "contains non-letter or non-whitespace characters\n";
 }
-$str1 = "Hello world ";
+$str1 = "Hello world 2";
 echo contains_only_letters_and_whitespace($str1);
 
 //5.Write a PHP function to find the second largest number in an array of numbers.
