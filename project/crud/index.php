@@ -1,8 +1,15 @@
 <?php
 require_once "inc/functions.php";
 $info = "";
-$task  = isset($_GET['task']) ? $_GET['task'] : 'report';
-$error = isset($_GET['error']) ? $_GET['error'] : '0';
+$task  = $_GET['task'] ?? 'report';
+$error = $_GET['error'] ?? '0';
+if('delete'==$task){
+    $id = filter_input(INPUT_GET,'id',FILTER_SANITIZE_STRING);
+    if($id){
+        deleteStudent($id);
+        header('location: index.php?task=report');
+    }
+}
 if('seed'==$task){
     seed();
     $info = "Seeding in complete";
@@ -14,14 +21,30 @@ if(isset($_POST['submit'])){
     $fname = filter_input(INPUT_POST,'fname',FILTER_SANITIZE_STRING);
     $lname = filter_input(INPUT_POST,'lname',FILTER_SANITIZE_STRING);
     $roll = filter_input(INPUT_POST,'roll',FILTER_SANITIZE_STRING);
-    if($fname != "" && $lname != "" && $roll != ""){
-        $stdinfo = addstudent($fname,$lname,$roll);
-        if($stdinfo){
-            header('Location: index.php?task=report');
-        }else{
-            $error = 1;
+    $id = filter_input(INPUT_POST,'id',FILTER_SANITIZE_STRING);
+
+    if($id){
+        //update the existing student
+        if($fname != '' && $lname != '' && $roll != ''){
+            $result = updateStudent($id,$fname,$lname,$roll);
+            if($result){
+                header('location: index.php?task=report');
+            }else{
+                $error = 1;
+            }
+        }
+    }else{
+        //add a new student
+        if($fname != '' && $lname != '' && $roll != ''){
+            $result = addstudent( $fname, $lname, $roll );
+            if($result){
+                header('location: index.php?task=report');
+            }else{
+                $error = 1;
+            }
         }
     }
+
 }
 
 
@@ -53,15 +76,16 @@ if(isset($_POST['submit'])){
                 ?>
             </div>
         </div>
-        <?php if('1'==$error):?>
+
             <div class="row">
                 <div class="column column-60 column-offset-20">
-                    <blockquote>
-                        Duplicate Roll Number
-                    </blockquote>
+                    <?php if("1" == $error){?>
+                        <blockquote>
+                            Duplicate Roll Number
+                        </blockquote>
+                    <?php }; ?>
                 </div>
             </div>
-        <?php endif; ?>
         <?php if('report'==$task):?>
         <div class="row">
             <div class="column column-60 column-offset-20">
@@ -94,7 +118,7 @@ if(isset($_POST['submit'])){
         ?>
             <div class="row">
                 <div class="column column-60 column-offset-20">
-                    <form method="POST">
+                    <form action="" method="POST">
                         <input type="hidden" name="id" value="<?php echo $student['id']; ?>">
                         <label for="fname">First Name</label>
                         <input type="text" name="fname" id="fname" required value="<?php echo $student['fname']; ?>">
@@ -112,5 +136,6 @@ if(isset($_POST['submit'])){
         endif;
         ?>
     </div>
+<script type="text/javascript" src="assest/js/script.js"></script>
 </body>
 </html>
