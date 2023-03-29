@@ -1,3 +1,6 @@
+<?php
+   session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,12 +16,27 @@
     <div class="container">
         <div class="row">
             <div class="column column-50 column-offset-20">
-                <h1>Assignment Module-8</h1>
+                <h1>Login form</h1>
             </div>
         </div>
         <div class="row">
             <div class="column column-50 column-offset-20">
-                
+                <?php
+                    echo "<h3>WellCome ".$_SESSION['name']."</h3>";
+                    
+                    if (!isset($_SESSION['login']) || $_SESSION['login'] !== true){
+                        header('Location: login.php');
+                        exit;
+                    }
+                    if(isset($_POST['logout'])){
+                        session_destroy();
+                        header('location:login.php');
+                        exit;
+                    }
+                ?>
+                <form action="" method="post">
+                    <input type="submit" name="logout" value="logout">
+                </form>
             </div>
         </div>
     </div>

@@ -2,7 +2,7 @@
     session_start();
     
     //$_SESSION['email'];
-    //$_SESSION['password'] ;
+    //$_SESSION['password'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,28 +25,29 @@
         <div class="row">
             <div class="column column-50 column-offset-20">
             <?php
+                $filename = "data.csv";
+                $alldata = fopen($filename,'r');
+
                 if(isset($_POST["login"])){
-                    $email = $_POST["email"];
+                    $email    = $_POST["email"];
                     $password = $_POST["password"];
-            
-                    // Check if email and password are filled
-                    if(empty($email) || empty($password)){
-                        echo "<p style='color:red;'>Both fields are required and must not be empty</p>";
-                    }
-                    // Check if email and password are correct
-                    // Here, you would usually check the database or session for the user's data
-                    // and verify that the email and password match
-                    elseif($email != "example@gmail.com" || $password != "password"){
-                        echo "<p style='color:red;'>Invalid login credentials</p>";
-                    }
-                    // Login successful
-                    else{
-                        echo "Login Successful";
-                        header("locatio");
+                    
+                    if(!empty($_POST["email"]) && !empty($_POST["password"])){
+                        
+                        while($data=fgetcsv($alldata)){
+                            if($data[2]===$email && $data[3]===$password){
+                                $_SESSION['login'] = true;
+                                $_SESSION['name'] = $data[0]." ".$data[1];
+
+                                header("location:wellcome.php");
+                                echo "<p style='color:green;'>Login Successful</p>";
+                                exit;
+                            }
+                        }
+                        echo "<p style='color:red;'>Login failed!</p>";
                     }
                 }
-                $filename = "data.csv";
-                $data = file_get_contents($filename);
+                
                 
             ?>
                 <form method="post">
