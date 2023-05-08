@@ -1,0 +1,86 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-size: cover;
+    font-family: 'Roboto', 'sans-serif';
+    background-image: url('https://media.istockphoto.com/id/1294521676/photo/programming-code-abstract-technology-background-of-software-developer-and-computer-script.jpg?b=1&s=170667a&w=0&k=20&c=ehWomY1hSv3JUibQuEJ4xgs98-aK6EZPh4Rb_IyGzjg=');
+  }
+  
+.container{
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 50px;
+    border-radius: 5px;
+    margin-top: 50px;
+}
+h1{
+    text-align: center;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 30px;
+}
+form{
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+label{
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+input{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.input-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+button{
+    padding: 10px 20px;
+    background-color: #2196F3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    transition: all 0.3s ease;
+}
+button:hover{
+    background-color: #0D47A1;
+}
+#result{
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+    margin-top: 20px;
+    text-align: center;
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        padding: 40px;
+        max-width: 50%;
+    }
+
+    h1 {
+        font-size: 30px;
+        margin-bottom: 25px;
+    }
+
+    input {
+        font-size: 16px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+
+    #result {
+        font-size: 22px;
+    }
+}
